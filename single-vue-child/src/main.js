@@ -19,7 +19,7 @@ console.log("window.singleSpaNavigate", window.singleSpaNavigate);
 if (window.singleSpaNavigate) {
   __webpack_public_path__ = "http://127.0.0.1:10000/";
 }
-// 子应用独立运行
+// 子应用独立运行,判断当前子应用是否是single-spa应用，不是就渲染
 if (!window.singleSpaNavigate) {
   console.log("window.singleSpaNavigate--子", window.singleSpaNavigate);
   delete appOptions.el;
@@ -30,7 +30,7 @@ export const bootstrap = vueLifecycles.bootstrap;
 export const mount = (props) =>
   vueLifecycles.mount(props).then((instance) => {
     // do what you want with the Vue instance
-    console.log("props", props);
-    console.log("instance", instance);
+    console.log("子应用页面-props", props);
+    console.log("子应用实例-instance", instance);
   });
 export const unmount = vueLifecycles.unmount;
